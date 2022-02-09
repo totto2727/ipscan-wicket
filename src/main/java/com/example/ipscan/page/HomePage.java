@@ -16,7 +16,7 @@ import java.util.Objects;
 @MountPath("Home")
 public class HomePage extends WebPage {
     public HomePage() {
-        var ipScanner = new IPScan("192.168.11.0");
+        var ipScanner = new IPScan("192.168.137.0");
         var ipInfoList = Objects.requireNonNull(ipScanner.scanAll(255))
                 .stream()
                 .filter(IPInfoModel::isUse)
