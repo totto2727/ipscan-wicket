@@ -11,15 +11,16 @@ import org.apache.wicket.markup.html.list.PropertyListView;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.util.Objects;
+
 @WicketHomePage
 @MountPath("Home")
 public class HomePage extends WebPage {
     public HomePage() {
         var ipScanner = new IPScan("192.168.11.0");
-        var ipInfoList = ipScanner.scanAll(255)
+        var ipInfoList = Objects.requireNonNull(ipScanner.scanAll(255))
                 .stream()
-                .filter(IPInfo::isUse)
-                .map(IPInfo::toModel)
+                .filter(IPInfoModel::isUse)
                 .toList();
 
         add(new PropertyListView<>("ipInfoList", Model.ofList(ipInfoList)) {

@@ -6,6 +6,6 @@ import java.net.InetAddress;
 
 public record IPInfo(InetAddress ipAddress, String hostName, boolean isUse) {
     public IPInfoModel toModel() {
-        return new IPInfoModel(ipAddress().getHostAddress(), hostName, isUse);
+        return new IPInfoModel(ipAddress().getAddress().toString(), hostName, isUse);
     }
 }

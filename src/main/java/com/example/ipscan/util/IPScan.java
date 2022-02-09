@@ -1,15 +1,19 @@
 package com.example.ipscan.util;
 
 import com.example.ipscan.data.IPInfo;
+import com.example.ipscan.model.IPInfoModel;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public record IPScan(String firstIpInTheNetwork) {
     public static void main(String[] args) {
@@ -21,7 +25,7 @@ public record IPScan(String firstIpInTheNetwork) {
         }
     }
 
-    public List<IPInfo> scanAll(int numOfIps) {
+    public List<IPInfoModel> scanAll(int numOfIps) {
         ForkJoinPool pool = new ForkJoinPool(100);
         var host = firstIpInTheNetwork.substring(0, firstIpInTheNetwork.length() - 1);
         try {
@@ -42,18 +46,28 @@ public record IPScan(String firstIpInTheNetwork) {
         }
     }
 
-    public IPInfo scan(String ipAddress) {
+    public IPInfoModel scan(String ipAddress) {
         try {
             var inetAddress = InetAddress.getByName(ipAddress);
             try {
-                return new IPInfo(inetAddress, inetAddress.getHostName(), inetAddress.isReachable(500));
+                return new IPInfoModel(inetAddress.getHostAddress(), inetAddress.getHostName(), inetAddress.isReachable(500));
             } catch (IOException e) {
                 e.printStackTrace();
-                return new IPInfo(inetAddress, inetAddress.toString(), false);
+                return new IPInfoModel(inetAddress.getHostAddress(), inetAddress.toString(), false);
             }
         } catch (UnknownHostException e) {
             e.printStackTrace();
             return null;
         }
     }
+
+//    @Value("${ipscan.bases}")
+//    private static List<String> bases = new ArrayList<>();
+//
+//    static public List<IPInfo> scanAll() {
+//        return bases
+//                .stream()
+//                .flatMap(v -> Objects.requireNonNull(new IPScan(v).scanAll(255)).stream())
+//                .toList();
+//    }
 }
