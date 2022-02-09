@@ -1,6 +1,5 @@
 package com.example.ipscan.page;
 
-import com.example.ipscan.data.IPInfo;
 import com.example.ipscan.model.IPInfoModel;
 import com.example.ipscan.util.IPScan;
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;

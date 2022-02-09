@@ -1,19 +1,15 @@
 package com.example.ipscan.util;
 
-import com.example.ipscan.data.IPInfo;
 import com.example.ipscan.model.IPInfoModel;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public record IPScan(String firstIpInTheNetwork) {
     public static void main(String[] args) {
