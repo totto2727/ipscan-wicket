@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IIPInfoDAO {
     List<IPInfoValue> findAll();
+
+    int merge(IPInfoValue ipInfoValue);
 }
