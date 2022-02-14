@@ -1,6 +1,6 @@
 package com.example.ipscan.service;
 
-import com.example.ipscan.dao.IPInfoDAO;
+import com.example.ipscan.dao.IIPInfoDAO;
 import com.example.ipscan.model.IPInfoValue;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +8,10 @@ import java.util.List;
 
 @Service
 public class IPInfoService implements IIPInfoService {
-    private final IPInfoDAO IPInfoDAO;
+    private final IIPInfoDAO IPInfoDAO;
 
-    public IPInfoService(IPInfoDAO IPInfoDAO) {
-        this.IPInfoDAO = IPInfoDAO;
+    public IPInfoService(IIPInfoDAO ipInfoDAO) {
+        this.IPInfoDAO = ipInfoDAO;
     }
 
     @Override
