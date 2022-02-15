@@ -1,4 +1,6 @@
 package com.example.ipscan.model;
 
-public record IPInfoValue(String ipAddress, String hostName, boolean isUse) {
+import java.io.Serializable;
+
+public record IPInfoValue(String ipAddress, String hostName, boolean isUse) implements Serializable {
 }
