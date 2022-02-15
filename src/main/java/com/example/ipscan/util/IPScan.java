@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 
 public record IPScan(String firstIpInTheNetwork) {
     public static void main(String[] args) {
-        var ipscan = new IPScan("192.168.11.0");
+        var ipscan = new IPScan("192.168.137.1");
         var networkIps = ipscan.scanAll(255);
         System.out.println("Devices connected to the network:");
         if (networkIps != null) {
