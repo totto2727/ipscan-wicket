@@ -5,15 +5,30 @@
     <title>HomePage</title>
 </head>
 <body>
+<h1>小松川・山川・深町研究室 IPアドレス一覧</h1>
+<div>
+    <table>
+        <tr>
+            <th>IPアドレス</th>
+            <th>ホスト名</th>
+            <th>使用状況</th>
+        </tr>
+
+        <tr>
+            <td>192.168.0.1</td>
+            <td>pc1-DESKTOP</td>
+            <td>TRUE</td>
+        </tr>
+    </table>
+</div>
 <div>
     <ul>
         <li wicket:id="ipInfoList">
-            <h1>小松川・山川・深町研究室 IPアドレス一覧</h1>
-
             <p>
                 <span wicket:id="ipAddress"></span>
                 <span wicket:id="hostName"></span>
                 <span wicket:id="isUse"></span>
+
             </p>
         </li>
     </ul>
