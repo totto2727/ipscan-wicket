@@ -7,5 +7,7 @@ import java.util.List;
 public interface IIPInfoDAO {
     List<IPInfoValue> findAll();
 
+    List<IPInfoValue> findFilterIsUse(boolean isUse);
+
     int merge(IPInfoValue ipInfoValue);
 }
