@@ -16,8 +16,14 @@ public class IPInfoDAO implements IIPInfoDAO {
     }
 
     public List<IPInfoValue> findAll() {
-        var sql = "select IP_ADDRESS,HOST_NAME,IS_USE from IP_INFO";
+        var sql = "select IP_ADDRESS,HOST_NAME,IS_USE from IP_INFO order by IP_ADDRESS";
         return jdbcTemplate.query(sql, DataClassRowMapper.newInstance(IPInfoValue.class));
+    }
+
+    @Override
+    public List<IPInfoValue> findFilterIsUse(boolean isUse) {
+        var sql = "select IP_ADDRESS,HOST_NAME,IS_USE from IP_INFO where IS_USE=?";
+        return jdbcTemplate.query(sql, DataClassRowMapper.newInstance(IPInfoValue.class), isUse);
     }
 
     @Override
